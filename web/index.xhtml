@@ -1,0 +1,410 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:mp="http://primefaces.org/ui/material"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+        <link rel="stylesheet" href="./css/main.css"/> 
+    </h:head>
+
+    <h:body>
+        <f:event type="preRenderView" listener="#{generoBean.listarGenero()}"/>
+        <f:event type="preRenderView" listener="#{estadoCivilBean.listarReligion()}"/>
+        <f:event type="preRenderView" listener="#{documentoIdentificacionBean.listarDocumentos()}"/>
+        <f:event type="preRenderView" listener="#{religionBean.listarReligion()}"/>
+        <f:event type="preRenderView" listener="#{ocupacionBean.listarOcupacion()}"/>
+        <f:event type="preRenderView" listener="#{domicilioBean.listarDomicilio()}"/>
+        <f:event type="preRenderView" listener="#{personaBean.listarPersona()}"/>
+        <f:event type="preRenderView" listener="#{pacienteBean.listarPaciente()}"/>
+        <f:event type="preRenderView" listener="#{referenciaClinicaBean.listarReferenciaClinica()}"/>
+        <f:event type="preRenderView" listener="#{enfermedadBean.listarEnfermedad()}"/>
+        <f:event type="preRenderView" listener="#{historialClinicoBean.listarHistorialClinico()}"/>
+
+        <!-- SideBar -->
+        <section class="full-box cover dashboard-sideBar">
+            <div class="full-box dashboard-sideBar-bg btn-menu-dashboard"></div>
+            <div class="full-box dashboard-sideBar-ct">
+                <!--SideBar Title -->
+                <div class="full-box text-uppercase text-center text-titles dashboard-sideBar-title">
+                    Clinica Medica <i class="zmdi zmdi-close btn-menu-dashboard visible-xs"></i>
+                </div>
+                <!-- SideBar User info -->
+                <div class="full-box dashboard-sideBar-UserInfo">
+                    <figure class="full-box">
+                        <img src="./assets/img/avatar.jpg" alt="UserIcon"/>
+                        <figcaption class="text-center text-titles">Harvey Herrera</figcaption>
+                    </figure>
+                    <ul class="full-box list-unstyled text-center">
+                        <li>
+                            <a href="#!">
+                                <i class="zmdi zmdi-settings"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!" class="btn-exit-system">
+                                <i class="zmdi zmdi-power"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- SideBar Menu -->
+                <ul class="list-unstyled full-box dashboard-sideBar-Menu">
+                    <li>
+                        <a href="home.html">
+                            <i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Inicio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!" class="btn-sideBar-SubMenu">
+                            <i class="zmdi zmdi-case zmdi-hc-fw"></i> Registros <i class="zmdi zmdi-caret-down pull-right"></i>
+                        </a>
+                        <ul class="list-unstyled full-box">
+                            <li>
+                                <a href="faces/index.xhtml"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> Historial Clinico</a>
+                            </li>
+                            <li>
+                                <a href="subject.html"><i class="zmdi zmdi-book zmdi-hc-fw"></i> Subject</a>
+                            </li>
+                            <li>
+                                <a href="section.html"><i class="zmdi zmdi-graduation-cap zmdi-hc-fw"></i> Section</a>
+                            </li>
+                            <li>
+                                <a href="salon.html"><i class="zmdi zmdi-font zmdi-hc-fw"></i> Salon</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </section>
+
+        <!-- Content page-->
+        <section class="full-box dashboard-contentPage">
+            <!-- NavBar -->
+            <nav class="full-box dashboard-Navbar">
+                <ul class="full-box list-unstyled text-right">
+                    <li class="pull-left">
+                        <a href="#!" class="btn-menu-dashboard"><i class="zmdi zmdi-more-vert"></i></a>
+                    </li>
+
+                    <li>
+                        <a href="#!" class="btn-search">
+                            <i class="zmdi zmdi-search"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!" class="btn-modal-help">
+                            <i class="zmdi zmdi-help-outline"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Content page -->
+            <div class="container-fluid">
+                <div class="page-header">
+                    <h1 class="text-titles"><i class="zmdi zmdi-face zmdi-hc-fw"></i> Historial Clinico</h1>
+                </div>
+                <p class="lead">Bienvenido a Historial Clinico donde podra registrar nuevo historiale a cada paciente!</p>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+                            <li class="active"><a href="#persona" data-toggle="tab">Datos Personales</a></li>
+                            <li><a href="#paciente" data-toggle="tab">Paciente</a></li>
+                            <li><a href="#historial" data-toggle="tab">Historial Clinico    </a></li>
+                            <li><a href="#list" data-toggle="tab">List</a></li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+
+                            <div class="tab-pane fade active in" id="persona">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-10 col-md-offset-1">
+
+                                            <!-- Formulario para agregar personas -->
+                                            <form id="formularioPersona">
+                                                <br/>
+                                                <fieldset>Datos personales</fieldset>
+                                                <br/>
+                                                <div class="form-group label-floating">
+                                                    <mp:input id="idPersona" label="Id Persona: " value="#{personaBean.persona.idPersona}" />
+                                                </div>
+
+                                                <div class="form-group label-floating">
+                                                    <mp:input id="nombre" label="Nombre: " value="#{personaBean.persona.nombre}"  />
+                                                </div>
+                                                <div class="form-group label-floating">
+                                                    <mp:input id="apellido" label="Apellido: " value="#{personaBean.persona.apellido}"  />
+                                                </div>
+
+                                                <div class="form-group label-fl oating">
+                                                    <mp:input id="fechaNac" label="Fecha Nacimiento: " value="#{personaBean.persona.fechaNacimiento}"/>
+                                                </div>
+                                                <div class="form-group label-floating">
+                                                    <mp:input id="telefono" label="Telefono: " value="#{personaBean.persona.telefono}" />
+                                                </div>
+                                                <div class="form-group label-floating">
+                                                    <mp:input id="correo" label="Correo Electronico: " value="#{personaBean.persona.correoElectronico}" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label">Genero: </label>
+                                                    <b:selectOneMenu class="form-control" value="#{personaBean.persona.idGenero}">
+                                                        <f:selectItems value="#{generoBean.lstGenero}" var="genero" itemLabel="#{genero.nombre}" itemValue="#{genero.idSexo}"/>
+                                                    </b:selectOneMenu>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label">Estado Civil: </label>
+                                                    <b:selectOneMenu value="#{personaBean.persona.idEstadoCivil}">
+                                                        <f:selectItems value="#{estadoCivilBean.lstEstadoCivil}" var="estadocivil" itemLabel="#{estadocivil.nombre}" itemValue="#{estadocivil.idEstadoCivil}"/>
+                                                    </b:selectOneMenu>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label">Documento de Identificacion: </label>
+                                                    <b:selectOneMenu value="#{personaBean.persona.idDocumentoPaciente}">
+                                                        <f:selectItems value="#{documentoIdentificacionBean.lstDocumentos}" var="documentoPaciente" itemLabel="#{documentoPaciente.tipo}" itemValue="#{documentoPaciente.idDocumento}"/>
+                                                    </b:selectOneMenu>
+                                                </div>
+
+                                                <div class="form-group label-floating">
+                                                    <mp:input id="nodoc" label="No.Documento: " value="#{personaBean.persona.noDocumento}"/>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label class="control-label">Religion: </label>
+                                                    <b:selectOneMenu id="religion" value="#{personaBean.persona.idReligion}">
+                                                        <f:selectItems value="#{religionBean.lstReligion}" var="religion" itemLabel="#{religion.nombre}" itemValue="#{religion.idReligion}"/>
+                                                    </b:selectOneMenu>
+                                                </div>
+
+                                                <p class="text-center">
+                                                    <button actionListener="#{personaBean.registrar()}" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i>Guardar</button>
+                                                </p>
+                                            </form>
+                                            <!-- Fin de Formulario Personas -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="tab-pane fade active in" id="paciente">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-10 col-md-offset-1">
+
+                                            <!-- Formulario para agregar Pacientes -->
+                                            <form id="formularioPacientes">
+                                                <br/>
+                                                <fieldset>Datos del Paciente</fieldset>
+                                                <br/>
+                                                <div class="form-group label-floating">
+                                                    <mp:input id="idPaciente" label="Id Paciente: " value="#{pacienteBean.paciente.idPaciente}" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label">Domicilio:  </label>
+                                                    <b:selectOneMenu id="domicilio" value="#{pacienteBean.paciente.idDomicilio}">
+                                                        <f:selectItems value="#{domicilioBean.lstDomicilio}" var="domicilio" itemLabel="#{domicilio.descripcion}" itemValue="#{domicilio.idDomicilio}"/>
+                                                    </b:selectOneMenu>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label">Persona:  </label>
+                                                    <b:selectOneMenu id="idPersona" value="#{pacienteBean.paciente.idPersona}">
+                                                        <f:selectItems value="#{personaBean.lstPersona}" var="personas" itemLabel="#{personas.nombre} #{personas.apellido}" itemValue="#{personas.idPersona}"/>
+                                                    </b:selectOneMenu>
+                                                </div>
+
+                                                <div class="form-group label-floating">
+                                                    <mp:input id="fechaNac" label="Contacto de Emergencia: " value=""/>
+                                                </div>
+                                                <div class="form-group label-floating">
+                                                    <mp:input id="telefono" label="Telefono de Contacto: " value="" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label">Ocupacion:  </label>
+                                                    <b:selectOneMenu id="religion" value="#{pacienteBean.paciente.idOcupacion}">
+                                                        <f:selectItems value="#{ocupacionBean.lstOcupacion}" var="ocupacion" itemLabel="#{ocupacion.nombre}" itemValue="#{ocupacion.idOcupacion}"/>
+                                                    </b:selectOneMenu>
+                                                </div>
+
+
+                                                <p class="text-center">
+                                                    <button actionListener="#{pacienteBean.registrar()}" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i>Guardar</button>
+                                                </p>
+                                            </form>
+                                            <!-- Fin de Formulario Pacientes -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="tab-pane fade active in" id="historial">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-10 col-md-offset-1">
+
+                                            <!-- Formulario para agregar Historiales -->
+                                            <form id="formularioPacientes">
+                                                <br/>
+                                                <fieldset>Datos del Paciente</fieldset>
+                                                <br/>
+                                                <div class="form-group label-floating">
+                                                    <mp:input id="idHistorialClinico" label="Id Historial Clinico: " value="#{historialClinicoBean.historial.idHistorialClinico}" />
+                                                </div>
+
+                                                <div class="form-group label-floating">
+                                                    <mp:input id="descripcion" label="Descripcion: " value="#{historialClinicoBean.historial.descripcion}" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label">Paciente:  </label>
+                                                    <b:selectOneMenu id="idHistorialPaciente" value="#{historialClinicoBean.historial.idPaciente}">
+                                                        <f:selectItems value="#{personaBean.lstPersona}" var="persona" itemLabel="#{persona.nombre} #{persona.apellido}" itemValue="#{persona.idPersona}"/>
+                                                    </b:selectOneMenu>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label">Referencia Clinica:  </label>
+                                                    <b:selectOneMenu id="idHistorialPaciente" value="#{historialClinicoBean.historial.idReferenciaClinica}">
+                                                        <f:selectItems value="#{referenciaClinicaBean.lstReferencia}" var="referencia" itemLabel="#{referencia.nombre}"  itemValue="#{referencia.idReferenciaClinica}"/>
+                                                    </b:selectOneMenu>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label">Enfermedad: </label>
+                                                    <b:selectOneMenu id="enfermedad" value="#{historialClinicoBean.historial.idEnfermedad}">
+                                                        <f:selectItems value="#{enfermedadBean.lstEnfermedad}" var="enfermedad" itemLabel="#{enfermedad.nombre}" itemValue="#{enfermedad.idEnfermedad}"/>
+                                                    </b:selectOneMenu>
+                                                </div>
+
+                                                <p class="text-center">
+                                                    <button actionListener="#{historialClinicoBean.registrar()}" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i>Guardar</button>
+                                                </p>
+                                            </form>
+                                            <!-- Fin de Formulario Historiales -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="list">
+                                <div class="table-responsive">
+                                    <form>
+                                        <p:dataTable  id="tbl" var="tabla1" value="#{historialClinicoBean.lsthistorial}" resizableColumns="true"
+                                                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} Historial Clinico"
+                                                      paginator="true" rows="12" class="table table-hover text-center">
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Codigo Historial" />
+                                                </f:facet>
+                                                <h:inputText class="form-control" value="#{tabla1.idHistorialClinico}" />
+                                            </p:column>
+
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Descripcion"/>
+                                                </f:facet>
+                                                <h:inputText class="form-control" value="#{tabla1.descripcion}" />
+                                            </p:column>
+
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Codigo Paciente"/>
+                                                </f:facet>
+                                                <h:inputText class="form-control" value="#{tabla1.idPaciente}" />
+                                            </p:column>
+
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Referencia Clinica"/>
+                                                </f:facet>
+                                                <h:inputText class="form-control" value="#{tabla1.idReferenciaClinica}" />
+                                            </p:column>
+
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Enfermedad"/>
+                                                </f:facet>
+                                                <h:inputText class="form-control" value="#{tabla1.idEnfermedad}" />
+                                            </p:column>
+
+                                            <p:column style="align-content: center">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Accion"/>
+                                                </f:facet>
+                                                <a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a>
+                                            </p:column>
+
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Accion"/>
+                                                </f:facet>
+                                                <a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a>
+                                            </p:column>
+
+                                        </p:dataTable>
+                                    </form>                           
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Dialog help -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="Dialog-Help">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Help</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            En esta seccion podra registrar un nuevo historial clinico para los pacientes 
+                            al cual desee
+
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btn-raised" data-dismiss="modal"><i class="zmdi zmdi-thumb-up"></i> Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--====== Scripts -->
+        <script src="./js/jquery-3.1.1.min.js"></script>
+        <script src="./js/sweetalert2.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/material.min.js"></script>
+        <script src="./js/ripples.min.js"></script>
+        <script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="./js/main.js"></script>
+        <script>
+            $.material.init();
+        </script>
+    </h:body>
+</html>
+
